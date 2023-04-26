@@ -12,11 +12,10 @@ jobs:
           distribution: 'temurin'
           java-version: 8
       - name: Download snapshot jar
-      - run: |
+        run: |
           mvn dependency:get -DremoteRepositories=https://oss.sonatype.org/content/repositories/snapshots/ -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT
           mvn dependency:copy -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -DoutputDirectory=.
           mv duckdb*.jar duckdb.jar
-        name: Copy snapshot jar to local dir
       - run: make jar
         name: build tests
       - run: make test
