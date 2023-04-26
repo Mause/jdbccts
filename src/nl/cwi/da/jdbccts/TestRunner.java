@@ -56,18 +56,22 @@ import com.sun.ts.tests.jdbc.ee.stmt.stmt1.stmtClient1;
 import com.sun.ts.tests.jdbc.ee.stmt.stmt2.stmtClient2;
 import com.sun.ts.tests.jdbc.ee.stmt.stmt3.stmtClient3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TestRunner {
+	static List<ServiceEETest> failed = new ArrayList<>();
 
 	private static void run(ServiceEETest t, String[] args) {
 		System.setProperty("exclude.list", "exclude");
 		System.setProperty("current.dir", "jakartaee-tck/src/com/sun/ts/tests/jdbc/ee");
 		Status s = t.run(args, System.out, System.err);
 		if (!s.isPassed()) {
-			System.exit(-1);
+			failed.add(t);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		run(new connectionClient1(), args);
 
@@ -125,6 +129,8 @@ public class TestRunner {
 		run(new resultSetClient47(), args); // varbinary stuff
 		run(new resultSetClient49(), args); // time & timestamps
 
+		// run(new batUpdExceptClient(), args); // not supported yet
+
 		// special snowflake rsMetaClient has a bug that expects ftable to be ctstable2
 		String[] args_meta = new String[args.length+1];
 		System.arraycopy(args, 0, args_meta, 0, args.length);
@@ -135,7 +141,14 @@ public class TestRunner {
 		run(new stmtClient2(), args);
 		run(new stmtClient3(), args);
 
-		System.exit(0);
+		if (failed.isEmpty()) {
+			System.exit(0);
+		} else {
+			for (ServiceEETest test : failed) {
+				System.out.printf("%s failed%n", test.getClass().getName());
+			}
+			System.exit(-1);
+		}
 	}
 
 }
