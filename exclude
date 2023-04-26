@@ -129,3 +129,9 @@ jdbc/ee/prepStmtClient14.java#testSetObject209_from_boat
 jdbc/ee/prepStmtClient16.java#testSetAsciiStream_from_boat
 jdbc/ee/prepStmtClient16.java#testSetBinaryStream_from_boat
 jdbc/ee/prepStmtClient16.java#testSetCharacterStream_from_boat
+
+jdbc/ee/dbMetaClient2.java#testGetSQLKeywords_from_boat
+jdbc/ee/dbMetaClient2.java#testGetNumericFunctions_from_boat
+jdbc/ee/dbMetaClient2.java#testGetStringFunctions_from_boat
+jdbc/ee/dbMetaClient2.java#testGetSystemFunctions_from_boat
+jdbc/ee/dbMetaClient2.java#testGetTimeDateFunctions_from_boat
