@@ -12,6 +12,7 @@ jobs:
           distribution: 'temurin'
           java-version: 8
       - run: mvn dependency:help
-      - run: mvn org.apache.maven.plugins:maven-dependency-plugin:3.5.0:copy -DremoteRepositories=https://oss.sonatype.org/content/repositories/snapshots/ -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -DoutputDirectory=. -X
+      - run: mvn dependency:get -DremoteRepositories=https://oss.sonatype.org/content/repositories/snapshots/ -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -X
+      - run: mvn dependency:copy -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -DoutputDirectory=. -X
       - run: mv duckdb*.jar duckdb.jar
       - run: make test
