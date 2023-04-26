@@ -19,4 +19,7 @@ jobs:
           mvn dependency:copy -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -DoutputDirectory=. -X
           mv duckdb*.jar duckdb.jar
         name: Copy snapshot jar to local dir
+      - run: make jar
+        name: build tests
       - run: make test
+        name: run tests

@@ -7,8 +7,10 @@ DUCKDB_JAR=duckdb.jar
 clean:
 	rm -rf build
 
-jar: jakartaee-tck update
+build/jdbccts.jar: jakartaee-tck update
 	mkdir -p build && cd build && cmake .. && cmake --build .
+
+jar: build/jdbccts.jar
 
 jakartaee-tck:
 	git clone https://github.com/eclipse-ee4j/jakartaee-tck.git --depth 10
