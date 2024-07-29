@@ -16,6 +16,7 @@ jobs:
           mvn dependency:get -DremoteRepositories=https://oss.sonatype.org/content/repositories/snapshots/ -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT
           mvn dependency:copy -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -DoutputDirectory=.
           mv duckdb*.jar duckdb.jar
+          ls
       - run: make jar
         name: build tests
       - run: make test
