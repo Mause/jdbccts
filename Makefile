@@ -9,7 +9,7 @@ clean:
 
 jar: jakartaee-tck update
 	mvn install:install-file -Dfile=jakartaee-tck/lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
-	mvn install -f jakartaee-tck/pom.xml pl jdbc -am
+	mvn install -f jakartaee-tck/pom.xml -pl jdbc -am
 	mkdir -p build && cd build && cmake .. && cmake --build .
 
 jakartaee-tck:
