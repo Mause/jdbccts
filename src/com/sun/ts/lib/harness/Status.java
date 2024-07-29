@@ -24,7 +24,7 @@
  * or visit www.oracle.com if you need additional information or have any
  * questions.
  */
-package com.sun.javatest;
+package com.sun.ts.lib.harness;
 
 /**
  * A class to embody the result of a test: a status-code and a related message.
