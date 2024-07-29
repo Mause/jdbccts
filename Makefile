@@ -19,4 +19,4 @@ update: jakartaee-tck
 	(cd jakartaee-tck; git pull)
 
 test: jar
-	java -cp $(DUCKDB_JAR):jakartaee-tck/libutil/target/libutil-11.0.0-SNAPSHOT.jar:jakartaee-tck/jdbc/target/jdbc-11.0.0-SNAPSHOT.jar:jakartaee-tck/common/target/common-11.0.0-SNAPSHOT.jar:build/jdbccts.jar -Dcurrent.dir=.jakartaee-tck/src/com/sun/ts/tests/jdbc/ee -Dexclude.list=exclude nl.cwi.da.jdbccts.TestRunner -p props
+	java -cp $(DUCKDB_JAR):duckdb.jar:jakartaee-tck/libutil/target/libutil-11.0.0-SNAPSHOT.jar:jakartaee-tck/jdbc/target/jdbc-11.0.0-SNAPSHOT.jar:jakartaee-tck/common/target/common-11.0.0-SNAPSHOT.jar:build/jdbccts.jar -Dcurrent.dir=.jakartaee-tck/src/com/sun/ts/tests/jdbc/ee -Dexclude.list=exclude nl.cwi.da.jdbccts.TestRunner -p props
