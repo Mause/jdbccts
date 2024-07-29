@@ -1,14 +1,16 @@
 .PHONY: all jar clean update test
 
 all: jar
-# fixme this is a hardcoded path
-# DUCKDB_JAR=/Users/hannes/source/duckdb/build/jdbc/tools/jdbc/DuckDBJ.jar
+
+DUCKDB_JAR=duckdb.jar
 
 clean:
 	rm -rf build
 
-jar: jakartaee-tck update
+build/jdbccts.jar: jakartaee-tck update
 	mkdir -p build && cd build && cmake .. && cmake --build .
+
+jar: build/jdbccts.jar
 
 jakartaee-tck:
 	git clone https://github.com/eclipse-ee4j/jakartaee-tck.git --depth 10

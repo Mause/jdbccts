@@ -1,0 +1,22 @@
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 8
+      - name: Download snapshot jar
+        run: |
+          mvn dependency:get -DremoteRepositories=https://oss.sonatype.org/content/repositories/snapshots/ -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT
+          mvn dependency:copy -Dartifact=org.duckdb:duckdb_jdbc:0.8.0-SNAPSHOT -DoutputDirectory=.
+          mv duckdb*.jar duckdb.jar
+      - run: make jar
+        name: build tests
+      - run: make test
+        name: run tests
