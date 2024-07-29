@@ -8,6 +8,7 @@ clean:
 	rm -rf build
 
 jar: jakartaee-tck update
+        mvn jar -P jakartaee-tck/jdbc/pom.xml
 	mkdir -p build && cd build && cmake .. && cmake --build .
 
 jakartaee-tck:
