@@ -23,16 +23,7 @@ public class DriverWrapper implements Driver {
 	}
 	
 	public Connection connect(String url, Properties info) throws SQLException {
-		Connection conn = null;
-		try {
-			conn = ((Driver)Class.forName("org.duckdb.DuckDBDriver").newInstance()).connect("jdbc:duckdb:", null);
-		} catch (Exception e) {
-			try{ // oldstuff, can be removed eventually
-				conn = ((Driver)Class.forName("nl.cwi.da.duckdb.DuckDBDriver").newInstance()).connect("jdbc:duckdb:", null);
-			} catch (Exception e2) {
-				throw new SQLException(e2);
-			}
-		} 
+		Connection conn = ((Driver)Class.forName("org.duckdb.DuckDBDriver").newInstance()).connect("jdbc:duckdb:", null);
 		Statement s = conn.createStatement();
 		s.executeUpdate("create table ctstable1 (TYPE_ID int, TYPE_DESC varchar(32))");
 		s.executeUpdate("create table ctstable2 (KEY_ID int, COF_NAME varchar(32), PRICE float, TYPE_ID int )");
