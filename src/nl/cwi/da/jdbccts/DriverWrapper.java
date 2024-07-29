@@ -23,7 +23,12 @@ public class DriverWrapper implements Driver {
 	}
 	
 	public Connection connect(String url, Properties info) throws SQLException {
-		Connection conn = ((Driver)Class.forName("org.duckdb.DuckDBDriver").newInstance()).connect("jdbc:duckdb:", null);
+		Connection conn;
+		try {
+			conn = ((Driver)Class.forName("org.duckdb.DuckDBDriver").newInstance()).connect("jdbc:duckdb:", null);
+		} catch (Exception e) {
+			throw new RuntimeError(e);
+		}
 		Statement s = conn.createStatement();
 		s.executeUpdate("create table ctstable1 (TYPE_ID int, TYPE_DESC varchar(32))");
 		s.executeUpdate("create table ctstable2 (KEY_ID int, COF_NAME varchar(32), PRICE float, TYPE_ID int )");
