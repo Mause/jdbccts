@@ -1,6 +1,6 @@
 package nl.cwi.da.jdbccts;
 
-import com.sun.javatest.Status;
+import com.sun.ts.lib.harness.Status;
 import com.sun.ts.lib.harness.ServiceEETest;
 import com.sun.ts.tests.jdbc.ee.connection.connection1.connectionClient1;
 import com.sun.ts.tests.jdbc.ee.dbMeta.dbMeta1.dbMetaClient1;
