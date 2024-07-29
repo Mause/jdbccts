@@ -27,7 +27,7 @@ public class DriverWrapper implements Driver {
 		try {
 			conn = ((Driver)Class.forName("org.duckdb.DuckDBDriver").newInstance()).connect("jdbc:duckdb:", null);
 		} catch (Exception e) {
-			throw new RuntimeError(e);
+			throw new SQLException(e);
 		}
 		Statement s = conn.createStatement();
 		s.executeUpdate("create table ctstable1 (TYPE_ID int, TYPE_DESC varchar(32))");
