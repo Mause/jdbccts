@@ -8,6 +8,7 @@ clean:
 	rm -rf build
 
 jar: jakartaee-tck update
+	mvn install -f jakartaee-tck/libutil/pom.xml
 	mvn package -f jakartaee-tck/jdbc/pom.xml
 	mkdir -p build && cd build && cmake .. && cmake --build .
 
