@@ -37,7 +37,6 @@ import com.sun.ts.tests.jdbc.ee.stmt.stmt2.stmtClient2;
 public class TestRunner {
 
 	private static void run(ServiceEETest t, String[] args) {
-		t.setup(args, new java.util.Properties());
 		Status s = t.run(args, System.out, System.err);
 		if (!s.isPassed()) {
 			System.exit(-1);
