@@ -14,4 +14,8 @@ project(jdbccts NONE)
 
 file(GLOB JAVA_SRC_FILES src/nl/cwi/da/jdbccts/*.java)
 set(CMAKE_JAVA_INCLUDE_PATH jakartaee-tck/src src)
-add_jar(jdbccts ${JAVA_SRC_FILES} INCLUDE_JARS jakartaee-tck/jdbc/target/jdbc-11.0.0-SNAPSHOT.jar)
+add_jar(jdbccts ${JAVA_SRC_FILES}
+  INCLUDE_JARS
+  jakartaee-tck/jdbc/target/jdbc-11.0.0-SNAPSHOT.jar
+  jakartaee-tck/common/target/common-11.0.0-SNAPSHOT.jar
+)
